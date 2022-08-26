@@ -22,6 +22,15 @@ client.connect((err) => {
 
 // define the first route
 app.get("/", function (req, res) {
+    // make nilai object inside users object
+    var users = {
+        nama: "stunggal",
+        email: "asd.com",
+        nilai: {
+            uas: 90,
+            uts: 80,
+        },
+    };
     // get data from mongodb and pass it to view
     const data = async (req, res) => {
         try {
@@ -33,7 +42,9 @@ app.get("/", function (req, res) {
     };
 });
 
-// start the server listening for requests
-app.listen(process.env.PORT || 3000, () =>
-    console.log("Server is running... on port 3000")
-);
+
+// listen to port 3000
+const port = 3000;
+app.listen(port, () => {
+    console.log(`listening on port ${port}`);
+});
